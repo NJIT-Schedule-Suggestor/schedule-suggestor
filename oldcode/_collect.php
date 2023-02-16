@@ -25,7 +25,7 @@ class Flags {
 };
 
 define("TERM", "fall");
-define("SOURCE_URL", "http://www.njit.edu/registrar/schedules/courses/fall/");
+define("SOURCE_URL", "https://generalssb-prod.ec.njit.edu/BannerExtensibility/customPage/page/stuRegCrseSched");
 define("SCRAPE_COURSES", true);
 
 define("CLEAR_COURSES", false);

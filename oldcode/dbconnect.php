@@ -8,6 +8,12 @@
  * http://www.gnu.org/licenses/lgpl-3.0.txt
  */
 
-$conn = new mysqli("localhost", "root", "werwer", "scbldr");
+$conn = new mysqli("localhost", "root", "Cs288005!", "scheduleSuggestor");
+
+if (!$conn){
+    echo "error";
+}else{
+    echo "connected\n";
+}
 
 ?>
