@@ -29,7 +29,6 @@ for i in range(0,124):
         aTag.send_keys(Keys.ARROW_DOWN)
         time.sleep(1)
 
-
     if i<70 or i>114:
         button = driver.find_element(By.ID,"pbid-courseListSectionExportToExcel")
         button.click()
