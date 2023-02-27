@@ -1,21 +1,50 @@
 .side-nav {
+    align-items: center;
     height: 100%;
-    width: 12.5%;
+    width: 14%;
     position: fixed;
     z-index: 1;
-    background-color: #333;
+    background-color: white;
     padding-top: 20px;
+    border: 1px solid rgba(0,0,0,0.10);
   }
   
   .side-nav a {
-    padding: 6px 8px 6px 16px;
+    font-weight: bold;
+    text-align: left;
+    padding: 15px 0px 15px 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 22px;
+    color: black;
     display: block;
+    caret-color: transparent;
   }
   
   .side-nav a:hover {
-    color: #f1f1f1;
+    background-color: rgba(0,0,0,0.15);
   }
   
+  .njit-image {
+    width: 80%;
+    padding-top: 10px;
+  }
+
+  .generate-button button {
+    background-color: #012D6B;
+    color: white;
+    font-weight:bold;
+    font-family: Helvetica;
+    margin-top: 30px;
+    padding: 10px 45px;
+    font-size: 22px;
+    text-transform: none;
+    border-radius: 30px;
+  }
+
+  .generate-button button:hover, .generate-button button:focus {
+    background-color: white;
+    color: #012D6B;
+    border: 1px solid #012D6B;
+  }
