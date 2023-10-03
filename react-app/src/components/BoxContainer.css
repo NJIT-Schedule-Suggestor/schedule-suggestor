@@ -1,0 +1,12 @@
+.box-container {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    height: 86vh;
+    width: 81%;
+    margin-left: 16.55%;
+    margin-top: 2.45%;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}

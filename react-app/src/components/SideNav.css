@@ -1,50 +1,51 @@
 .side-nav {
-    align-items: center;
-    height: 100%;
-    width: 14%;
-    position: fixed;
-    z-index: 1;
-    background-color: white;
-    padding-top: 20px;
-    border: 1px solid rgba(0,0,0,0.10);
-  }
-  
-  .side-nav a {
-    font-weight: bold;
-    text-align: left;
-    padding: 15px 0px 15px 30px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-    display: block;
-    caret-color: transparent;
-  }
-  
-  .side-nav a:hover {
-    background-color: rgba(0,0,0,0.15);
-  }
-  
-  .njit-image {
-    width: 80%;
-    padding-top: 10px;
-  }
+  align-items: center;
+  height: 100%;
+  width: 14%;
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  padding-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
 
-  .generate-button button {
-    background-color: #012D6B;
-    color: white;
-    font-weight:bold;
-    font-family: Helvetica;
-    margin-top: 30px;
-    padding: 10px 45px;
-    font-size: 22px;
-    text-transform: none;
-    border-radius: 30px;
-  }
+.side-nav a {
+  font-weight: bold;
+  text-align: left;
+  padding: 15px 0px 15px 30px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+  display: block;
+  caret-color: transparent;
+}
 
-  .generate-button button:hover, .generate-button button:focus {
-    background-color: white;
-    color: #012D6B;
-    border: 1px solid #012D6B;
-  }
+.side-nav a:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.njit-image {
+  width: 80%;
+  padding-top: 10px;
+}
+
+.generate-button button {
+  background-color: #012D6B;
+  color: white;
+  font-weight: bold;
+  font-family: Helvetica;
+  margin-top: 30px;
+  padding: 10px 45px;
+  font-size: 22px;
+  text-transform: none;
+  border-radius: 30px;
+}
+
+.generate-button button:hover,
+.generate-button button:focus {
+  background-color: white;
+  color: #012D6B;
+  border: 1px solid #012D6B;
+}

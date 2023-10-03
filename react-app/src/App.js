@@ -1,4 +1,5 @@
 import './App.css';
+import { BoxContainer } from './components/BoxContainer';
 import { SideNav } from './components/SideNav';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
           <hr className='top-bar'></hr>
         </div>
         <SideNav />
+        <BoxContainer/>
     </div>
   );
 }
