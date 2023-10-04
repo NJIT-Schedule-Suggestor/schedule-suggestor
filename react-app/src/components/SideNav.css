@@ -1,7 +1,7 @@
 .side-nav {
   align-items: center;
   height: 100%;
-  width: 14%;
+  width: 13vw;
   position: fixed;
   z-index: 1;
   background-color: white;
@@ -16,7 +16,7 @@
   margin-top: 25px;
   margin-bottom: 25px;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 1.2vw;
   color: black;
   display: block;
   caret-color: transparent;
@@ -34,11 +34,11 @@
 .generate-button button {
   background-color: #012D6B;
   color: white;
-  font-weight: bold;
   font-family: Helvetica;
   margin-top: 30px;
   padding: 10px 45px;
-  font-size: 22px;
+  font-size: 1.15vw;
+  width: 70%;
   text-transform: none;
   border-radius: 30px;
 }
