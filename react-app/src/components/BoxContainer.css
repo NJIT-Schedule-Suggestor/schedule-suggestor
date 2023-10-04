@@ -1,4 +1,4 @@
-.box-container {
+/* .box-container {
     display: flex;
     background-color: white;
     justify-content: center;
@@ -7,6 +7,27 @@
     width: 81%;
     margin-left: 16.55%;
     margin-top: 2.45%;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+} */
+
+
+.shift-right {
+    height: max-content;
+    padding-left: 16.1%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+
+.box-container {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    width: auto;
     border-radius: 5px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
