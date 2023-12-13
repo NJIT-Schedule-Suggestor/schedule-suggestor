@@ -1,5 +1,9 @@
+import { Header } from "../components/Header"
+
 export default function Generate () {
     return (
-        <h1>Generated Schedules</h1>
+        <div className='generate'>
+            <Header text='Generated Schedules' size='large'/>
+        </div>
     )
 };

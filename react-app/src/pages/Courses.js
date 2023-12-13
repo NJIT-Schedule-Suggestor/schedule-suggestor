@@ -3,8 +3,8 @@ import { Header } from '../components/Header';
 
 export default function Courses () {
     return (
-        <div>
-            <Header text='Courses' size='medium'/>
+        <div className='courses'>
+            <Header text='Course Search' size='large'/>
         </div>
         )
 };
