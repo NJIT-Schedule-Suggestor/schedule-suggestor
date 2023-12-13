@@ -1,5 +1,5 @@
 export default function TimePreference () {
     return (
-        <h1>Time Preferences n shit</h1>
+        <h1>Time Preference</h1>
     )
 };
