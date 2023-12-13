@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import './Header.css';
 
 // This is for the header. Each page contains the name of the page at the top left
-
 export function Header(props) {
-    //ternary operator for sizes small, medium, large
     return (
         <div className={`header ${props.size}-header`}>
             <h1> {props.text} </h1>
