@@ -1,5 +1,10 @@
+//import { Component } from 'react';
+import { Header } from '../components/Header';
+
 export default function Courses () {
     return (
-        <h1>Courses</h1>
-    )
+        <div>
+            <Header text= 'Courses' size='large'/>
+        </div>
+        )
 };
