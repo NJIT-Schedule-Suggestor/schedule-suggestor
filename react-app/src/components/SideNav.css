@@ -16,7 +16,7 @@
   margin-top: 25px;
   margin-bottom: 25px;
   text-decoration: none;
-  font-size: 1.2vw;
+  font-size: 1.1vw;
   color: black;
   display: block;
   caret-color: transparent;
@@ -27,7 +27,7 @@
 }
 
 .njit-image {
-  width: 80%;
+  width: 60%;
   padding-top: 10px;
 }
 
@@ -35,12 +35,13 @@
   background-color: #012D6B;
   color: white;
   font-family: Helvetica;
-  margin-top: 30px;
+  margin-top: 10px;
   padding: 10px 45px;
-  font-size: 1.15vw;
+  font-size: 1vw;
   width: 70%;
   text-transform: none;
   border-radius: 30px;
+  line-height: 22.5px;
 }
 
 .generate-button button:hover,

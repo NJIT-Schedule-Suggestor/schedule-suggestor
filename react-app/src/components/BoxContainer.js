@@ -5,7 +5,9 @@ import { Outlet } from 'react-router';
 export function BoxContainer() {
     return (
         <div className="box-container">
-            <Outlet/>
+            <div className='page-container'>
+                <Outlet/>
+            </div>
         </div>
     );
 }

@@ -1,5 +1,9 @@
+import { Header } from "../components/Header"
+
 export default function TimePreference () {
     return (
-        <h1>Time Preferences n shit</h1>
+        <div className='time-preference'>
+            <Header text='Time Preference' size='large'/>
+        </div>
     )
 };
