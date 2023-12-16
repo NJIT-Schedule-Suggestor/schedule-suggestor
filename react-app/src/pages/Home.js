@@ -32,11 +32,11 @@ export default function Home() {
 
   const handleOpenWebsite = (person) => {
     let websiteURL = "";
-    if (person === "Zaid") {
+    if (person === "Zaid A.") {
       websiteURL = "https://www.linkedin.com/in/zaidabujumaiza/";
-    } else if (person === "Maahir") {
+    } else if (person === "Maahir V.") {
       websiteURL = "https://www.linkedin.com/in/maahir-vohra-669914234/";
-    } else if (person === "Sandeep") {
+    } else if (person === "Sandeep S.") {
       websiteURL = "https://www.linkedin.com/in/sandeep-singh-00a903200/";
     } else {
       return;
