@@ -8,6 +8,8 @@ export default function Courses() {
   const [searchClass, setSearchClass] = useState("");
   const [courseCount, setCourseCount] = useState(0);
   const [creditCount, setCreditCount] = useState(0);
+  const [allCourses, setAllCourses] = useState([]);
+  const [selectedCourses, setSelectedCourses] = useState([]);
 
   return (
     <div className="courses">
@@ -40,6 +42,13 @@ export default function Courses() {
         </div>
       </div>
       <div style={{ borderBottom: "1px solid #ddd" }}></div>
+      <div>
+        {selectedCourses.length === 0 ? (
+          <p>No Courses Selected...</p>
+        ) : (
+          <div></div>
+        )}
+      </div>
     </div>
   );
 }
@@ -85,7 +94,7 @@ const styles = {
   icon: {
     position: "relative",
     top: "10px",
-    right: "50px",
+    right: "45px",
     cursor: "pointer",
   },
   courseCountInfo: {
