@@ -1,15 +1,15 @@
 /* small medium large */
 
-.header {
+/* .header {
     font-family: Helvetica;
-}
+} */
 
 .small-header {
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .medium-header {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .large-header {
