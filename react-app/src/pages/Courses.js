@@ -1,15 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "../components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 export default function Courses() {
   const [semester, setSemester] = useState("");
   const [searchClass, setSearchClass] = useState("");
   const [courseCount, setCourseCount] = useState(0);
   const [creditCount, setCreditCount] = useState(0);
-  const [allCourses, setAllCourses] = useState([]);
+  const [allCourses, setAllCourses] = useState({ courses: [] });
   const [selectedCourses, setSelectedCourses] = useState([]);
+  const [hoveredOption, setHoveredOption] = useState(null);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        if (searchClass !== "") {
+          const response = await axios.get(
+            `http://127.0.0.1:5000/courses/${searchClass}`
+          );
+          const result = response.data;
+
+          setAllCourses(result);
+          console.log(result);
+        } else {
+          setAllCourses([]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    setCourseCount(selectedCourses.length);
+    fetchCourses();
+  }, [searchClass]);
+
+  const handleCourseSelect = (option) => {
+    setSelectedCourses((prevSelected) => [...prevSelected, option]);
+    setAllCourses([]);
+    setSearchClass("");
+    setHoveredOption(null);
+  };
 
   return (
     <div className="courses">
@@ -24,14 +56,46 @@ export default function Courses() {
           <option value="">Semester</option>
           <option value="spring2024">Spring 2024</option>
         </select>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            position: "relative",
+          }}
+        >
+          <input
+            style={styles.classInputSearch}
+            type="text"
+            placeholder="Search For Class"
+            value={searchClass}
+            onChange={(event) => setSearchClass(event.target.value)}
+          />
+          {allCourses.length !== 0 && (
+            <div style={styles.dropdownSelect}>
+              {allCourses.courses.map((option, index) => (
+                <React.Fragment key={option}>
+                  <option
+                    value={option}
+                    onClick={() => handleCourseSelect(option)}
+                    onMouseEnter={() => setHoveredOption(option)}
+                    onMouseLeave={() => setHoveredOption(null)}
+                    style={{
+                      cursor: "pointer",
+                      backgroundColor:
+                        hoveredOption === option ? "#e0e0e0" : "white",
+                    }}
+                  >
+                    {option}
+                  </option>
+                  {index < allCourses.courses.length - 1 && (
+                    <div style={{ borderBottom: "1px solid #ddd" }}></div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          )}
+        </div>
 
-        <input
-          style={styles.classInputSearch}
-          type="text"
-          placeholder="Search For Class"
-          value={searchClass}
-          onChange={(event) => setSearchClass(event.target.value)}
-        />
         <FontAwesomeIcon icon={faSearch} style={styles.icon} />
         <button style={styles.classInputSearchButton}>
           View all NJIT Courses
@@ -43,11 +107,10 @@ export default function Courses() {
       </div>
       <div style={{ borderBottom: "1px solid #ddd" }}></div>
       <div>
-        {selectedCourses.length === 0 ? (
-          <p>No Courses Selected...</p>
-        ) : (
-          <div></div>
-        )}
+        <p>Selected Courses:</p>
+        {selectedCourses.map((course) => (
+          <div key={course}>{course}</div>
+        ))}
       </div>
     </div>
   );
@@ -99,7 +162,6 @@ const styles = {
   },
   courseCountInfo: {
     display: "flex",
-    alignItems: "center",
     justifyContent: "center",
   },
   courseCountInfoText: {
@@ -110,5 +172,15 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     marginBottom: "10px",
+  },
+  dropdownSelect: {
+    position: "absolute",
+    top: "100%",
+    left: 0,
+    width: "350px",
+    border: "1px solid #ccc",
+    zIndex: 1,
+    maxHeight: "200px",
+    overflowY: "auto",
   },
 };
