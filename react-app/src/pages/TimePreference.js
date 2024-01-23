@@ -181,18 +181,20 @@ const styles = {
   check: {
     flexDirection: 'column',
     marginBottom: '2vh',
+    marginTop: '.5vh',
   },
   date: {
-    // marginLeft: '80px',
-    marginLeft: '3vh',
+    marginLeft: '3vh', //80px
     flexDirection: 'column',
   },
   from: {
     marginLeft: '5vw', //90px
+    marginTop: '.6vh',
     flexDirection: 'column',
   },
   to: {
     marginLeft: '0vw',
+    marginTop: '.6vh',
     flexDirection: 'column',
   },
 };
