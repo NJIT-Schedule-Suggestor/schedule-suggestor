@@ -55,10 +55,7 @@ export default function Courses() {
   }, [courseCount, creditCount, selectedCourses]);
 
   const handleCourseSelect = (option) => {
-    // Convert option.Credits to integer
     const optionCredits = parseInt(option.Credits, 10);
-
-    // Check if the option is already in selectedCourses and if the sum of credits is less than 21
     if (
       !selectedCourses.some((course) => course.Course === option.Course) &&
       optionCredits + creditCount < 22
