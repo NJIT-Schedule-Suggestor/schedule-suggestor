@@ -115,21 +115,100 @@ const Days = () => {
   );
 };
 
+// const styles = {
+//   subheader: {
+//     fontSize: '18px',
+//     fontFamily: "Inter",
+//     fontWeight: "450",
+//   },
+//   lineFormat: {
+//     fontSize: "20px",
+//     fontFamily: "Arial",
+//     marginTop: "30px",
+//     marginBottom: "30px"
+//   },
+//   bottomText: {
+//     marginTop: '0px',
+//     fontSize: '17px',
+//     fontFamily: "Inter",
+//     fontWeight: "450"
+//   },
+//   grayedout: {
+//     color: '#888',  
+//     opacity: '0.6',
+//   },
+//   checkRow: {
+//     marginBottom: '40px',
+//     transform: 'scale(1.4)', 
+//   },
+//   parent: {
+//     display: 'grid',
+//     gridTemplateColumns: 'repeat(7, 1fr)',
+//     gap: '0px',
+//     fontSize: '20px',
+//     fontFamily: "Inter",
+//     fontWeight: "600",
+//   },
+//   timeDropdownLeft: {
+//     fontFamily: "Inter",
+//     fontSize: "14px",
+//     textAlign: 'center',
+//     borderRadius: "4px",
+//     backgroundColor: "#e0e0e0",
+//     color: "black",
+//     fontWeight: "bold",
+//     height: "35px",
+//     width: "125px",
+//     padding: "8px",
+//     border: "1px solid #ccc",
+//     marginLeft: '10px',
+//   },
+//   timeDropdownRight: {
+//     fontFamily: "Inter",
+//     fontSize: "14px",
+//     textAlign: 'center',
+//     borderRadius: "4px",
+//     backgroundColor: "#e0e0e0",
+//     color: "black",
+//     fontWeight: "bold",
+//     height: "35px",
+//     width: "125px",
+//     padding: "8px",
+//     border: "1px solid #ccc",
+//     marginLeft: '-115px',
+//   },
+//   check: {
+//     flexDirection: 'column'
+//   },
+//   date: {
+//     marginLeft: '80px',
+//     flexDirection: 'column'
+//   },
+//   from: {
+//     marginLeft: '90px',
+//     flexDirection: 'column'
+//   },
+//   to: {
+//     marginLeft: '0px',
+//     flexDirection: 'column',
+//   },
+// };
+
 const styles = {
   subheader: {
-    fontSize: '18px',
+    fontSize: '2vw',
     fontFamily: "Inter",
     fontWeight: "450",
   },
   lineFormat: {
-    fontSize: "20px",
+    fontSize: "2.2vw",
     fontFamily: "Arial",
-    marginTop: "30px",
-    marginBottom: "30px"
+    marginTop: "3vh",
+    marginBottom: "3vh"
   },
   bottomText: {
-    marginTop: '0px',
-    fontSize: '17px',
+    marginTop: '0vw',
+    fontSize: '1.7vw',
     fontFamily: "Inter",
     fontWeight: "450"
   },
@@ -138,58 +217,58 @@ const styles = {
     opacity: '0.6',
   },
   checkRow: {
-    marginBottom: '40px',
+    marginBottom: '4vh',
     transform: 'scale(1.4)', 
   },
   parent: {
     display: 'grid',
     gridTemplateColumns: 'repeat(7, 1fr)',
-    gap: '0px',
-    fontSize: '20px',
+    gap: '0vw',
+    fontSize: '2vw',
     fontFamily: "Inter",
     fontWeight: "600",
   },
   timeDropdownLeft: {
     fontFamily: "Inter",
-    fontSize: "14px",
+    fontSize: "1.4vw",
     textAlign: 'center',
     borderRadius: "4px",
     backgroundColor: "#e0e0e0",
     color: "black",
     fontWeight: "bold",
-    height: "35px",
-    width: "125px",
-    padding: "8px",
+    height: "3.5vh",
+    width: "12.5vw",
+    padding: "0.8vw",
     border: "1px solid #ccc",
-    marginLeft: '10px',
+    marginLeft: '1vw',
   },
   timeDropdownRight: {
     fontFamily: "Inter",
-    fontSize: "14px",
+    fontSize: "1.4vw",
     textAlign: 'center',
     borderRadius: "4px",
     backgroundColor: "#e0e0e0",
     color: "black",
     fontWeight: "bold",
-    height: "35px",
-    width: "125px",
-    padding: "8px",
+    height: "3.5vh",
+    width: "12.5vw",
+    padding: "0.8vw",
     border: "1px solid #ccc",
-    marginLeft: '-115px',
+    marginLeft: '-11.5vw',
   },
   check: {
     flexDirection: 'column'
   },
   date: {
-    marginLeft: '80px',
+    marginLeft: '8vw',
     flexDirection: 'column'
   },
   from: {
-    marginLeft: '90px',
+    marginLeft: '9vw',
     flexDirection: 'column'
   },
   to: {
-    marginLeft: '0px',
+    marginLeft: '0vw',
     flexDirection: 'column',
   },
 };
