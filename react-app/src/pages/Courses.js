@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import TrashCan from "../components/TrashCan.png";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function Courses() {
   const [semester, setSemester] = useState("");
@@ -24,7 +25,6 @@ export default function Courses() {
           const result = response.data;
 
           setAllCourses(result);
-          console.log(result);
         } else {
           setAllCourses([]);
         }
@@ -35,15 +35,44 @@ export default function Courses() {
     fetchCourses();
   }, [searchClass]);
 
+  useEffect(() => {
+    const storedCourses = Cookies.get("Courses");
+
+    if (storedCourses) {
+      const parsedCourses = JSON.parse(storedCourses);
+      setSelectedCourses(parsedCourses);
+      setCourseCount(parseInt(Cookies.get("CourseCount"), 10) || 0);
+      setCreditCount(parseInt(Cookies.get("CreditCount"), 10) || 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedCourses.length !== 0) {
+      Cookies.set("Courses", JSON.stringify(selectedCourses));
+      Cookies.set("CourseCount", courseCount);
+      Cookies.set("CreditCount", creditCount);
+    } else {
+      Cookies.remove("Courses");
+      Cookies.remove("CourseCount");
+      Cookies.remove("CreditCount");
+      setCourseCount(0);
+      setCreditCount(0);
+    }
+  }, [courseCount, creditCount, selectedCourses]);
+
   const handleCourseSelect = (option) => {
-    setSelectedCourses((prevSelected) => [...prevSelected, option]);
-    setCourseCount((prevSelected) => prevSelected + 1);
-    setCreditCount(
-      (prevSelected) => prevSelected + parseInt(option.Credits, 10)
-    );
-    setAllCourses([]);
-    setSearchClass("");
-    setHoveredOption(null);
+    const optionCredits = parseInt(option.Credits, 10);
+    if (
+      !selectedCourses.some((course) => course.Course === option.Course) &&
+      optionCredits + creditCount < 22
+    ) {
+      setSelectedCourses((prevSelected) => [...prevSelected, option]);
+      setCourseCount((prevSelected) => prevSelected + 1);
+      setCreditCount((prevSelected) => prevSelected + optionCredits);
+      setAllCourses([]);
+      setSearchClass("");
+      setHoveredOption(null);
+    }
   };
 
   const handleDeleteCourse = (course) => {
