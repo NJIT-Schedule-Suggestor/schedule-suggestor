@@ -117,19 +117,20 @@ const Days = () => {
 
 const styles = {
   subheader: {
-    fontSize: '18px',
+    // fontSize: '18px',
+    fontSize: '1.121rem', //18px
     fontFamily: "Inter",
     fontWeight: "450",
   },
   lineFormat: {
-    fontSize: "20px",
-    fontFamily: "Arial",
-    marginTop: "30px",
-    marginBottom: "30px"
+    // fontSize: "20px",
+    // fontFamily: "Arial",
+    marginTop: '4vh', //30px
+    marginBottom: '4vh', //30px
   },
   bottomText: {
-    marginTop: '0px',
-    fontSize: '17px',
+    marginTop: '0vh',
+    fontSize: '1.06rem', //17px
     fontFamily: "Inter",
     fontWeight: "450"
   },
@@ -138,58 +139,62 @@ const styles = {
     opacity: '0.6',
   },
   checkRow: {
-    marginBottom: '40px',
+    marginBottom: '2.4vh', //40px ish
     transform: 'scale(1.4)', 
   },
   parent: {
     display: 'grid',
     gridTemplateColumns: 'repeat(7, 1fr)',
-    gap: '0px',
-    fontSize: '20px',
+    gap: '0vh',
+    fontSize: '1.25rem', //20px
     fontFamily: "Inter",
     fontWeight: "600",
   },
   timeDropdownLeft: {
     fontFamily: "Inter",
-    fontSize: "14px",
+    fontSize: ".88rem", //14px
     textAlign: 'center',
-    borderRadius: "4px",
+    borderRadius: ".25vw", //4px
     backgroundColor: "#e0e0e0",
     color: "black",
     fontWeight: "bold",
-    height: "35px",
-    width: "125px",
-    padding: "8px",
+    height: "4.6vh", //35px
+    width: "8.7vw", //125px
+    padding: ".56vw", //8px
     border: "1px solid #ccc",
-    marginLeft: '10px',
+    marginLeft: '.70vw', //10px
   },
   timeDropdownRight: {
     fontFamily: "Inter",
-    fontSize: "14px",
+    fontSize: ".88rem", //14px
     textAlign: 'center',
-    borderRadius: "4px",
+    borderRadius: ".25vw", //4px
     backgroundColor: "#e0e0e0",
     color: "black",
     fontWeight: "bold",
-    height: "35px",
-    width: "125px",
-    padding: "8px",
+    height: "4.6vh", //35px
+    width: "8.7vw", //125px
+    padding: ".56vw", //8px
     border: "1px solid #ccc",
-    marginLeft: '-115px',
+    marginLeft: '-8vw', //-115px
   },
   check: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginBottom: '2vh',
+    marginTop: '.5vh',
   },
   date: {
-    marginLeft: '80px',
-    flexDirection: 'column'
+    marginLeft: '3vh', //80px
+    flexDirection: 'column',
   },
   from: {
-    marginLeft: '90px',
-    flexDirection: 'column'
+    marginLeft: '5vw', //90px
+    marginTop: '.6vh',
+    flexDirection: 'column',
   },
   to: {
-    marginLeft: '0px',
+    marginLeft: '0vw',
+    marginTop: '.6vh',
     flexDirection: 'column',
   },
 };
