@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Header } from "../components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import TrashCan from "../components/TrashCan.png";
 import axios from "axios";
 
 export default function Courses() {
@@ -31,16 +32,68 @@ export default function Courses() {
         console.error("Error fetching data:", error);
       }
     };
-
-    setCourseCount(selectedCourses.length);
     fetchCourses();
   }, [searchClass]);
 
   const handleCourseSelect = (option) => {
     setSelectedCourses((prevSelected) => [...prevSelected, option]);
+    setCourseCount((prevSelected) => prevSelected + 1);
+    setCreditCount(
+      (prevSelected) => prevSelected + parseInt(option.Credits, 10)
+    );
     setAllCourses([]);
     setSearchClass("");
     setHoveredOption(null);
+  };
+
+  const handleDeleteCourse = (course) => {
+    setCourseCount((prevSelected) => prevSelected - 1);
+    setCreditCount(
+      (prevSelected) => prevSelected - parseInt(course.Credits, 10)
+    );
+    setSelectedCourses((prevSelected) =>
+      prevSelected.filter((selectedCourse) => selectedCourse !== course)
+    );
+  };
+
+  const handleViewAllCourses = () => {
+    window.open(
+      "https://generalssb-prod.ec.njit.edu/BannerExtensibility/customPage/page/stuRegCrseSched",
+      "_blank"
+    );
+  };
+
+  const DisplayInfo = () => {
+    return (
+      <>
+        {selectedCourses.map((course, index) => (
+          <div
+            style={index % 2 === 0 ? styles.courseList1 : styles.courseList2}
+            key={course}
+          >
+            <p style={styles.courses}>{course.Course}</p>
+            <p style={styles.courseTitle}>{course.Title}</p>
+            <p style={styles.courseMode}>
+              {course.DeliveryModes.map((mode, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && ", "}
+                  {mode}
+                </React.Fragment>
+              ))}
+            </p>
+            <p style={styles.courseCredits}>{course.Credits}</p>
+            <div style={styles.trashDelete}>
+              <img
+                style={styles.trashImage}
+                src={TrashCan}
+                alt="TrashCan"
+                onClick={() => handleDeleteCourse(course)}
+              />
+            </div>
+          </div>
+        ))}
+      </>
+    );
   };
 
   return (
@@ -85,7 +138,7 @@ export default function Courses() {
                         hoveredOption === option ? "#e0e0e0" : "white",
                     }}
                   >
-                    {option}
+                    {option.Course}
                   </option>
                   {index < allCourses.courses.length - 1 && (
                     <div style={{ borderBottom: "1px solid #ddd" }}></div>
@@ -97,7 +150,10 @@ export default function Courses() {
         </div>
 
         <FontAwesomeIcon icon={faSearch} style={styles.icon} />
-        <button style={styles.classInputSearchButton}>
+        <button
+          style={styles.classInputSearchButton}
+          onClick={handleViewAllCourses}
+        >
           View all NJIT Courses
         </button>
         <div style={styles.courseCountInfo}>
@@ -106,12 +162,32 @@ export default function Courses() {
         </div>
       </div>
       <div style={{ borderBottom: "1px solid #ddd" }}></div>
-      <div>
-        <p>Selected Courses:</p>
-        {selectedCourses.map((course) => (
-          <div key={course}>{course}</div>
-        ))}
-      </div>
+
+      {selectedCourses.length === 0 ? (
+        <p style={{ fontSize: "13px", fontWeight: "bold", marginTop: "2vh" }}>
+          Please Select Some Courses...
+        </p>
+      ) : (
+        <div>
+          <p>Selected Courses</p>
+          <div style={styles.courseHeading}>
+            <div style={styles.courses}>
+              <p>Course</p>
+            </div>
+            <div style={styles.courseTitle}>
+              <p>Title</p>
+            </div>
+            <div style={styles.courseMode}>
+              <p>Delivery Mode</p>
+            </div>
+            <div style={styles.courseCredits}>
+              <p>Credits</p>
+            </div>
+            <div style={styles.trashDelete}></div>
+          </div>
+          <DisplayInfo />
+        </div>
+      )}
     </div>
   );
 }
@@ -175,6 +251,8 @@ const styles = {
   },
   dropdownSelect: {
     position: "absolute",
+    fontFamily: "Inter",
+    fontSize: "14px",
     top: "100%",
     left: 0,
     width: "350px",
@@ -182,5 +260,65 @@ const styles = {
     zIndex: 1,
     maxHeight: "200px",
     overflowY: "auto",
+  },
+  courseHeading: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  courseList1: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "rgba(0, 0, 0, 0.15)",
+  },
+  courseList2: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
+  },
+  courses: {
+    display: "flex",
+    flexDirection: "column",
+    paddingLeft: "2vw",
+    flex: "1",
+    fontFamily: "Inter",
+    fontSize: "12px",
+    fontWeight: "bold",
+  },
+  courseTitle: {
+    display: "flex",
+    flexDirection: "column",
+    flex: "2",
+    fontFamily: "Inter",
+    fontSize: "12px",
+    fontWeight: "bold",
+  },
+  courseMode: {
+    display: "flex",
+    flexDirection: "column",
+    flex: "2",
+    fontFamily: "Inter",
+    fontSize: "12px",
+    fontWeight: "bold",
+  },
+  courseCredits: {
+    display: "flex",
+    flexDirection: "column",
+    // textAlign: "center",
+    flex: "1",
+    fontFamily: "Inter",
+    fontSize: "12px",
+    fontWeight: "bold",
+  },
+  trashDelete: {
+    display: "flex",
+    flexDirection: "column",
+    // paddingRight: "1vw",
+    flex: "0.25",
+    justifyContent: "center",
+  },
+  trashImage: {
+    width: "1vw",
+    height: "2vh",
+    cursor: "pointer",
   },
 };
