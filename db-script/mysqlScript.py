@@ -4,7 +4,7 @@ import pandas as pd
 import mysql.connector
 
 cnx = mysql.connector.connect(
-    host="dt3bgg3gu6nqye5f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	", user="n4zbrlm1065fpeh6", password="o6in4yjlk123n21b", database="cusnsdako2stshzf"
+    host="dt3bgg3gu6nqye5f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", user="n4zbrlm1065fpeh6", password="o6in4yjlk123n21b", database="cusnsdako2stshzf"
 )
 cursor = cnx.cursor()
 
@@ -15,6 +15,20 @@ for filename in sorted(os.listdir(csv_folder)):
         df = pd.read_csv(os.path.join(csv_folder, filename))
         df = df.rename(columns={"Delivery Mode": "DeliveryMode"})
         df = df.replace(np.nan, None)
+        df["SecondaryTime"] = None
+        df["SecondaryDays"] = None
+        df["SecondaryLocation"] = None
+
+        uniqueCrns = []
+        for i in range(len(df)):
+            crn = df.loc[i, "CRN"]
+            if crn in uniqueCrns:
+                df.loc[i-1, "SecondaryTime"] = df.loc[i, "Times"]
+                df.loc[i-1, "SecondaryDays"] = df.loc[i, "Days"]
+                df.loc[i-1, "SecondaryLocation"] = df.loc[i, "Location"]
+                df = df.drop(i)
+            else:
+                uniqueCrns.append(crn)
 
         table_name = os.path.splitext(filename)[0].split("_")[3]
         if table_name == "AS":
