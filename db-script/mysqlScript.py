@@ -4,7 +4,7 @@ import pandas as pd
 import mysql.connector
 
 cnx = mysql.connector.connect(
-    host="localhost", user="root", password="ss@NJIT123", database="schedule_suggestor"
+    host="dt3bgg3gu6nqye5f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	", user="n4zbrlm1065fpeh6", password="o6in4yjlk123n21b", database="cusnsdako2stshzf"
 )
 cursor = cnx.cursor()
 
