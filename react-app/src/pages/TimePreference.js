@@ -1,5 +1,5 @@
 import { Header } from "../components/Header";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Cookies from "js-cookie";
 
 const firstTimeOption = [
@@ -15,14 +15,27 @@ const secondTimeOption = [
 
 
 const Days = () => {
-  const [days, setDays] = useState([
-    { name: 'Monday', checked: true, time: 'All Day' },
-    { name: 'Tuesday', checked: true, time: 'All Day' },
-    { name: 'Wednesday', checked: true, time: 'All Day' },
-    { name: 'Thursday', checked: true, time: 'All Day' },
-    { name: 'Friday', checked: true, time: 'All Day' },
-    { name: 'Saturday', checked: true, time: 'All Day' },
-  ]);
+
+  //retrieve saved cookies
+  const getSavedData = () => {
+    const savedData = Cookies.get('userDays');
+    return savedData ? JSON.parse(savedData) : null;
+  };
+
+  //retrieve and set saved cookies(only if saved cookies are available)
+  const initializeState = useCallback(() => {
+    const savedData = getSavedData();
+    return savedData ? savedData : [
+      { name: 'Monday', checked: true, startTime: 'All Day', endTime: 'All Day' },
+      { name: 'Tuesday', checked: true, startTime: 'All Day', endTime: 'All Day' },
+      { name: 'Wednesday', checked: true, startTime: 'All Day', endTime: 'All Day' },
+      { name: 'Thursday', checked: true, startTime: 'All Day', endTime: 'All Day' },
+      { name: 'Friday', checked: true, startTime: 'All Day', endTime: 'All Day' },
+      { name: 'Saturday', checked: true, startTime: 'All Day', endTime: 'All Day' },
+    ];
+  }, []);
+
+  const [days, setDays] = useState(() => initializeState());
   const [dataModified, setDataModified] = useState(false);
 
   const handleChecklistChange = (index) => {
@@ -43,17 +56,21 @@ const Days = () => {
     setDataModified(true);
   };
 
-  //if data is changed, set expiration date of cookie to 2 months(sandeep said 2)
-  // and save data to the cookie whenever it's modified
+  //save cookies
   useEffect(() => {
     if (dataModified) {
       const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getMonth() + 2);
+      expirationDate.setMonth(expirationDate.getMonth() + 2);
 
-      Cookies.set('userDays', JSON.stringify(days));
+      Cookies.set('userDays', JSON.stringify(days), { expires: expirationDate });
       setDataModified(false);
     }
   }, [dataModified, days]);
+
+  //initiliaze saved cookies
+  useEffect(() => {
+    setDays(initializeState());
+  }, [initializeState]);
 
   return (
     //time preference header
@@ -114,6 +131,7 @@ const Days = () => {
     </div>
   );
 };
+
 
 const styles = {
   subheader: {
@@ -200,3 +218,4 @@ const styles = {
 };
 
 export default Days;
+
