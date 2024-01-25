@@ -51,7 +51,9 @@ export default function Courses() {
       Cookies.set("Courses", JSON.stringify(selectedCourses));
       Cookies.set("CourseCount", courseCount);
       Cookies.set("CreditCount", creditCount);
-    } else {
+    }
+    const storedCourse = Cookies.get("CourseCount");
+    if (storedCourse === 0 || courseCount === 0) {
       Cookies.remove("Courses");
       Cookies.remove("CourseCount");
       Cookies.remove("CreditCount");
