@@ -39,8 +39,8 @@ const Line = ({ type }) => {
   
   const styles = {
     gridChild: {
-      fontSize: '15px', // Adjust the font size as needed
-      margin: '11px', // Remove any default margin
-      marginLeft: '0%',
+      fontSize: '.70rem', // Adjust the font size as needed
+      margin: '2vh', // Remove any default margin
+      marginLeft: '-0%',
     },
   };
