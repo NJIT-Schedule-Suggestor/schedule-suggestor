@@ -1,0 +1,6 @@
+/* Calendar.css */
+
+/* Hide the vertical scrollbar */
+.dp-calendar-scrollbar-vertical {
+    display: none !important;
+}
