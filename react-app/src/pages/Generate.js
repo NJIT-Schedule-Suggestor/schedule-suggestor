@@ -1,256 +1,182 @@
-// import { Header } from "../components/Header";
-// import Grid from '@mui/material/Grid';
-// import Typography from '@mui/material/Typography';
+// import React from 'react';
+// import './Generate.css';
 
-// const Line = ({ type, style }) => {
-//   const lineStyle = {
-//     width: '100%',
-//     borderBottom: type === 'solid' ? '1px solid black' : '.5px dotted gray',
-//     // margin: '0', // Remove any default margin
-//     ...style, // Apply additional styles
+
+// const YourTimetable = () => {
+//   const generateTimeRows = () => {
+//     const rows = [];
+//     for (let hour = 7; hour <= 19; hour++) {
+//       rows.push(
+//         <React.Fragment key={`row-${hour}`}>
+//           <tr className={`sv-grid-row ${hour % 2 === 0 ? 'even' : 'odd'}`} data-time={`${hour}:00 am`}>
+//             <td className={`sv-grid-col sv-grid-cell time-label`}>{`${hour}:00 am`}</td>
+//             <td className={`sv-grid-col sv-grid-cell sv-day-2 sv-first-col`}></td>
+//             <td className={`sv-grid-col sv-grid-cell sv-day-3`}></td>
+//             <td className={`sv-grid-col sv-grid-cell sv-day-4`}></td>
+//             <td className={`sv-grid-col sv-grid-cell sv-day-5`}></td>
+//             <td className={`sv-grid-col sv-grid-cell sv-day-6`}></td>
+//           </tr>
+//           {hour !== 19 && (
+//             <tr className={`sv-grid-row dotted-line`} key={`dotted-line-${hour}`}>
+//               <td colSpan="7" className={`sv-grid-col dotted-line`}></td>
+//             </tr>
+//           )}
+//         </React.Fragment>
+//       );
+//     }
+//     return rows;
 //   };
 
-//   return <div style={lineStyle}></div>;
-// };
-
-// // Generate component
-// export default function Generate() {
-//   const timeSlots = [
-//     "7:00AM", "8:00AM", "9:00AM", "10:00AM",
-//     "11:00AM", "12:00PM", "1:00PM", "2:00PM",
-//     "3:00PM", "4:00PM", "5:00PM", "6:00PM", "7:00PM"
-//   ];
-
 //   return (
-//     <div className='generate'>
-//       <Header text='Generated Schedules' size='medium'/>  
-//       <Grid container spacing={0}>
-//         {timeSlots.map((time, index) => (
-//           <Grid item xs={12} key={index} style={{ position: 'relative'}}>
-//               <Line type='solid' />
-//               {index < timeSlots.length - 1 && <Line type='dots' style={styles.dottedLine} />} {/* Render dotted line only between times */}
-//               <Typography style={styles.gridChild} component="div">
-//                 <div>{time}</div>
-//               </Typography>
-//           </Grid>
-//         ))}
-//       </Grid>
-//     </div>
+//     <table className="sv-grid-table">
+//       <colgroup>
+//         <col className="sv-body-tbl-col" />
+//         <col className="sv-body-tbl-col" />
+//         <col className="sv-body-tbl-col" />
+//         <col className="sv-body-tbl-col" />
+//         <col className="sv-body-tbl-col" />
+//         <col className="sv-body-tbl-col" />
+//         <col className="sv-body-tbl-col" />
+        
+//       </colgroup>
+//       <thead>
+//         <tr className="sv-grid-hdr-row">
+//           <th className="sv-grid-col sv-col-hdr sv-day-2 sv-first-col">
+//             <span className="sv-grid-col-label">Monday</span>
+//           </th>
+//           <th className="sv-grid-col sv-col-hdr sv-day-3">
+//             <span className="sv-grid-col-label">Tuesday</span>
+//           </th>
+//           <th className="sv-grid-col sv-col-hdr sv-day-4">
+//             <span className="sv-grid-col-label">Wednesday</span>
+//           </th>
+//           <th className="sv-grid-col sv-col-hdr sv-day-5">
+//             <span className="sv-grid-col-label">Thursday</span>
+//           </th>
+//           <th className="sv-grid-col sv-col-hdr sv-day-6">
+//             <span className="sv-grid-col-label">Friday</span>
+//           </th>
+//           <th className="sv-grid-col sv-col-hdr sv-day-7">
+//             <span className="sv-grid-col-label">Saturday</span>
+//           </th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         {generateTimeRows()}
+//       </tbody>
+//     </table>
 //   );
-// }
-
-// const styles = {
-//   gridChild: {
-//     fontSize: '0.6rem', // Reduce the font size
-//     margin: '1vh 0', // Reduce vertical margin
-//     position: 'relative', // Make the container relative for absolute positioning
-//     top: '-2.2rem',
-//   },
-//   dottedLine: {
-//     borderTop: '1px dotted', // Use borderTop to set the color of the dotted line
-//     marginTop: '30px', // Reduce marginTop
-//   },
 // };
+
+// export default YourTimetable;
+
+
+
+
+
+
+
 
 
 // import React from 'react';
-// import {Grid, Typography } from '@mui/material';
+// import './Generate.css'; // Import your stylesheet for styling
 
-// const TimeTable = () => {
-//   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-//   const hoursOfDay = Array.from({ length: 13 }, (_, i) => i + 7); // 7am to 7pm
+// const YourScheduleComponent = () => {
+//   // You can customize the width, height, and other styles in your CSS file
+//   const timeSlots = ['7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'];
 
 //   return (
-//     <Grid container spacing={1}>
-//       {/* Empty cell for the top-left corner */}
-//       <Grid item xs={2} />
-
-//       {/* Days of the week (Monday to Saturday) */}
-//       {daysOfWeek.map((day, index) => (
-//         <Grid key={index} item xs={1} align="center">
-//           <Typography variant="h6">{day}</Typography>
-// \        </Grid>
-//       ))}
-
-//       {/* Time slots (7am to 7pm) */}
-//       {hoursOfDay.map((hour) => (
-//         <Grid key={hour} container item xs={12} spacing={1}>
-//           {/* Time label column */}
-//           <Grid item xs={2} align="center">
-//             <hr/>
-//             <Typography variant="h6">{`${hour % 12 || 12}:00 ${hour >= 12 ? 'pm' : 'am'}`}</Typography>
-//           </Grid>
-
-//           {/* Timetable cells for each day */}
-//           {daysOfWeek.map((day, index) => (
-//             <Grid key={`${day}-${hour}`} item xs={2} align="center">
-//               {/* Add your content here, e.g., events or classes */}
-//             </Grid>
-//           ))}
-//         </Grid>
-//       ))}
-//     </Grid>
+//     <div className="schedule-container">
+//       <div className="time-column">
+//         {timeSlots.map((time, index) => (
+//           <div key={index} className="time-label">
+//             {time}
+//           </div>
+//         ))}
+//       </div>
+//       <div className="schedule-grid">
+//         <table>
+//           <thead>
+//             <tr>
+//               <th>Monday</th>
+//               <th>Tuesday</th>
+//               <th>Wednesday</th>
+//               <th>Thursday</th>
+//               <th>Friday</th>
+//               <th>Saturday</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {/* Add rows for each time slot */}
+//             {timeSlots.map((time, index) => (
+//               <tr key={index}>
+//                 <td></td>
+//                 <td></td>
+//                 <td></td>
+//                 <td></td>
+//                 <td></td>
+//                 <td></td>
+//               </tr>
+//             ))}
+//             {/* Add more rows as needed */}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
 //   );
 // };
 
-// export default TimeTable;
+// export default YourScheduleComponent;
+import React from 'react';
+import './Generate.css'; // Import your stylesheet for styling
 
-
-
-
-
-
-// import React, { useState } from 'react';
-// import { DayPilotCalendar } from "@daypilot/daypilot-lite-react";
-
-// const Calendar = () => {
-//     const [config, setConfig] = useState({
-//         viewType: "Week"
-//     });
-
-//     return (
-//         <div>
-//             <DayPilotCalendar {...config} />
-//         </div>
-//     );
-// }
-
-// export default Calendar;
-
-
-// import React, { useState } from 'react';
-// import { DayPilotCalendar } from "@daypilot/daypilot-lite-react";
-
-// const Calendar = () => {
-//     const [config, setConfig] = useState({
-//         viewType: "Week",
-//         days: 6, // Set the number of days to display (Monday - Saturday)
-//         timeHeaders: [
-//             { groupBy: "Day", format: "dddd" }, // Display day names (Monday - Sunday)
-//             { groupBy: "Hour", format: "h tt", start: 7, end: 20} // Display hours from 7 am to 7 pm
-//         ]
-//     });
-
-//     return (
-//         <div>
-//             <DayPilotCalendar {...config} />
-//         </div>
-//     );
-// }
-
-// export default Calendar;
-
-
-// import React, { useState } from 'react';
-// import { DayPilotCalendar } from "@daypilot/daypilot-lite-react";
-
-// const Calendar = () => {
-//   // State for viewType
-//   const [config, setConfig] = useState({
-//     viewType: "Resources",
-//     columns: [
-//       { name: "Monday", id: "R1" },
-//       { name: "Tuesday", id: "R2" },
-//       { name: "Wednesday", id: "R3" },
-//       { name: "Thursday", id: "R4" },
-//       { name: "Friday", id: "R5" },
-//       { name: "Saturday", id: "R6" },
-//     ],
-//     timeHeaders: [
-//       { groupBy: "Hour", format: "h tt", start: 7, end: 21 } // Display hours from 7 am to 7 pm
-//     ]
-//   });
-
-//   return (
-//     <DayPilotCalendar
-//       {...config}
-//     />
-//   );
-// }
-
-// export default Calendar;
-
-
-// import React, { useState } from 'react';
-// import { DayPilotCalendar } from "@daypilot/daypilot-lite-react";
-
-// const Calendar = () => {
-//   const [config, setConfig] = useState({
-//     viewType: "Resources",
-//     columns: [
-//       { name: "Monday", id: "R1" },
-//       { name: "Tuesday", id: "R2" },
-//       { name: "Wednesday", id: "R3" },
-//       { name: "Thursday", id: "R4" },
-//       { name: "Friday", id: "R5" },
-//       { name: "Saturday", id: "R6" },
-//     ],
-//     businessBeginsHour: 13,  // Set the start hour to 7 am
-//     businessEndsHour: 14,  // Set the end hour to 7 pm
-
-//   });
-
-//   return (
-//     <DayPilotCalendar
-//       {...config}
-//     />
-//   );
-// }
-
-// export default Calendar;
-
-import React, { useState, useRef, useEffect } from 'react';
-import { DayPilotCalendar } from "@daypilot/daypilot-lite-react";
-import './Generate.css'; // Import a separate CSS file for styling
-
-const Calendar = () => {
-  const calendarRef = useRef(null);
-  const [config, setConfig] = useState({
-    viewType: "Resources",
-    columns: [
-      { name: "Monday", id: "R1" },
-      { name: "Tuesday", id: "R2" },
-      { name: "Wednesday", id: "R3" },
-      { name: "Thursday", id: "R4" },
-      { name: "Friday", id: "R5" },
-      { name: "Saturday", id: "R6" },
-    ],
-    startDate: "2024-02-05T07:00:00",
-  });
-
-  const calendar = () => {
-    return calendarRef.current ? calendarRef.current.control : null;
-  };
-
-  const customTimeHeaders = [
-    "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM"
-  ];
-
-  const onBeforeTimeHeaderRender = (args) => {
-    const index = args.header.hour - config.businessBeginsHour;
-    if (index < 0 || index >= customTimeHeaders.length) {
-      args.header.html = ""; // Hide time headers outside the range
-    } else {
-      args.header.html = customTimeHeaders[index];
-    }
-  };
-
-  useEffect(() => {
-    const currentCalendar = calendar();
-    if (currentCalendar) {
-      currentCalendar.update();
-    }
-  }, [config]); // Update the calendar when the config changes
+const YourScheduleComponent = () => {
+  // You can customize the width, height, and other styles in your CSS file
+  const timeSlots = ['7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'];
 
   return (
-    <div className="calendar-container">
-      <DayPilotCalendar
-        {...config}
-        ref={calendarRef}
-        onBeforeTimeHeaderRender={onBeforeTimeHeaderRender}
-      />
+    <div className="schedule-container">
+      <div className="time-column">
+        {timeSlots.map((time, index) => (
+          <div key={index} className="time-label">
+            {time}
+          </div>
+        ))}
+      </div>
+      <div className="schedule-grid">
+        <table>
+          <thead>
+            <tr>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+            </tr>
+          </thead>
+          <tbody>
+            {timeSlots.map((time, index) => (
+              <React.Fragment key={index}>
+                <tr className={`sv-grid-row ${index % 2 === 0 ? 'even' : 'odd'}`} data-time={time}>
+                  {Array.from({ length: 6 }).map((_, dayIndex) => (
+                    <td key={dayIndex} className={`sv-grid-col sv-grid-cell sv-day-${dayIndex + 2} ${dayIndex === 0 ? 'sv-first-col' : ''}`}></td>
+                  ))}
+                </tr>
+                {index !== timeSlots.length - 1 && (
+                  <tr className={`sv-grid-row dotted-line`} key={`dotted-line-${index}`}>
+                    {Array.from({ length: 6 }).map((_, dayIndex) => (
+                      <td key={dayIndex} colSpan="1" className={`sv-grid-col dotted-line`}></td>
+                    ))}
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
-}
+};
 
-export default Calendar;
+export default YourScheduleComponent;

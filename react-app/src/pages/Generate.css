@@ -1,6 +1,106 @@
-/* Calendar.css */
-
-/* Hide the vertical scrollbar */
-.dp-calendar-scrollbar-vertical {
-    display: none !important;
+/* .sv-grid-table {
+    width: 100%;
+    border-collapse: collapse;
 }
+
+.sv-body-tbl-col {
+}
+
+.sv-grid-hdr-row th {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: green;
+    font-size: 12px;
+}
+
+.sv-grid-col {
+    border: 1px solid #ddd;
+    padding: 11px;
+    text-align: center;
+}
+
+.sv-grid-row.even {
+    background-color: #f2f2f2;
+}
+
+.sv-grid-row.dotted-line {
+    border-top: 1px dashed blue;
+}
+
+.sv-grid-col.dotted-line {
+    height: px;
+}
+
+.time-label {
+    font-weight: bold;
+    font-size: 10px;
+    position: relative;
+    background-color: transparent;
+} */
+
+
+/* Container for the schedule */
+.schedule-container {
+    display: flex;
+}
+
+/* time div */
+.time-column {
+    width: 80px; /* Adjust as needed */
+    padding-right: 10px; /* Adjust as needed */
+    box-sizing: border-box;
+}
+
+.time-line {
+    position: relative;
+}
+
+/* times  */
+.time-label {
+    position: relative;
+    text-align: right;
+    top: -10px;
+    width: 70px; /* Same as the time column width */
+    margin-top: 39px;
+    font-size: 12px;
+}
+
+/* Style for the schedule grid */
+.schedule-grid {
+    flex: 1;
+    overflow: auto; /* Add scrollbars if the content overflows */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    border-spacing: 0 10px; /*Adjust the second value to control the distance between rows*/
+}
+
+/* days */
+th, td {
+    margin: 0px -5px; /* Adjust the margin as needed */
+    width: 100px; /* Adjust the width as needed */
+    border: 1px solid #ccc;
+    padding: 12.6px;
+    text-align: center;
+    font-size: 12px;
+}
+
+tr:first-child th {
+    padding-top: 5px; /* Adjust the top padding as needed */
+    padding-bottom: 5px; /* Adjust the bottom padding as needed */
+}
+
+
+tr:not(.dotted-line) td {
+    border-top: 1px dotted gray !important;
+}
+
+/* Resetting border for td elements in the top row */
+tr.dotted-line td {
+    border-top: none;
+}
+
