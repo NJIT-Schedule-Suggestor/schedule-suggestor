@@ -6,8 +6,9 @@
 
 /* time div */
 .time-column {
-    width: 4.2vw; 
-    padding-right: .52vw; 
+    width: 4.2vw;
+    /* padding-right: .52vw; */
+    padding-right: 4.9vw;
     box-sizing: border-box;
 }
 
@@ -20,7 +21,8 @@
     position: relative;
     text-align: right;
     top: -.3vh;
-    width: 3.65vw; 
+    width: 4.4vw;
+    /* changed width*/
     margin-top: 3.67vh;
     font-size: .75rem;
 }
@@ -28,7 +30,7 @@
 /* Style for the schedule grid */
 .schedule-grid {
     flex: 1;
-    overflow: auto; 
+    overflow: auto;
 }
 
 table {
@@ -39,9 +41,10 @@ table {
 }
 
 /* days */
-th, td {
-    margin: 0vw -.26vw; 
-    width: 5.2vw; 
+th,
+td {
+    margin: 0vw -.26vw;
+    width: 5.2vw;
     border: .1vw solid #ccc;
     padding: 1.273vh;
     text-align: center;
