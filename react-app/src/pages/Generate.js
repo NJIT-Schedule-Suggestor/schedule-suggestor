@@ -76,49 +76,37 @@ const TimeTable = () => {
     const baseStart = 7 * 60; // 7:00 AM
     const hourHeight = 60; // 60px per hour – adjust if your CSS grid is different
 
-    const blocks = [];
+    return Object.entries(selectedSchedule).map(([course, section], index) => {
+      const startMin = toMinutes(section.start);
+      const endMin = toMinutes(section.end);
+      const topOffset = ((startMin - baseStart) / 60) * hourHeight;
+      const height = ((endMin - startMin) / 60) * hourHeight;
+      const dayIndex = dayMap[section.day];
 
-    Object.entries(selectedSchedule).forEach(([course, section]) => {
-      // A section can meet on multiple days (e.g. MWF, TuTh) — render one
-      // block per meeting instead of assuming a single flat start/end/day.
-      const meetings = section.meetings || [];
-
-      meetings.forEach((m, meetingIndex) => {
-        const startMin = toMinutes(m.start);
-        const endMin = toMinutes(m.end);
-        const topOffset = ((startMin - baseStart) / 60) * hourHeight;
-        const height = ((endMin - startMin) / 60) * hourHeight;
-        const dayIndex = dayMap[m.day];
-
-        if (dayIndex === undefined) return; // skip anything with an unrecognized day
-
-        blocks.push(
-          <div
-            key={`${course}-${section.section}-${meetingIndex}`}
-            className="course-block"
-            style={{
-              position: 'absolute',
-              top: `${topOffset}px`,
-              left: `${dayIndex * 100}px`, // assuming 100px per day column
-              height: `${height}px`,
-              width: '100px',
-              backgroundColor: '#4287f5',
-              color: 'white',
-              padding: '4px',
-              borderRadius: '4px',
-              boxSizing: 'border-box',
-              fontSize: '12px'
-            }}
-          >
-            {course} - {section.section}
-            <br />
-            {m.start}–{m.end}
-          </div>
-        );
-      });
+      return (
+        <div
+          key={index}
+          className="course-block"
+          style={{
+            position: 'absolute',
+            top: `${topOffset}px`,
+            left: `${dayIndex * 100}px`, // assuming 100px per day column
+            height: `${height}px`,
+            width: '100px',
+            backgroundColor: '#4287f5',
+            color: 'white',
+            padding: '4px',
+            borderRadius: '4px',
+            boxSizing: 'border-box',
+            fontSize: '12px'
+          }}
+        >
+          {course} - {section.section}
+          <br />
+          {section.start}–{section.end}
+        </div>
+      );
     });
-
-    return blocks;
   };
 
 
